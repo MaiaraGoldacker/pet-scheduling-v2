@@ -1,5 +1,6 @@
 package br.com.pet.schedulling.service
 
+import br.com.pet.schedulling.exception.NotFoundException
 import br.com.pet.schedulling.mapper.PetRequestMapper
 import br.com.pet.schedulling.mapper.PetResponseMapper
 import br.com.pet.schedulling.model.Pet
@@ -30,9 +31,11 @@ class PetService(var petList: List<Pet> = ArrayList(),
     }
 
     private fun getPet(id:Long): Pet{
-        return  petList.stream().filter({
+      val petService = petList.stream().filter {
             p -> p.id == id
-        }).findFirst().get()
+        }.findFirst().orElseThrow{(NotFoundException("PetService not found"))}
+
+        return petService
     }
 
     fun save(petRequest: PetRequest): PetResponse {
