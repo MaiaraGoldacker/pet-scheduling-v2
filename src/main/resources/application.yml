@@ -1,0 +1,9 @@
+spring:
+  web:
+    locale: pt_BR
+    locale-resolver: fixed
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=pet-v2
+    username: postgres
+    password: postgres
