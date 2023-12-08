@@ -23,7 +23,7 @@ import org.springframework.web.util.UriComponentsBuilder
 class PetController(private val service: PetService){
 
     @GetMapping
-    fun getAll(): List<Pet>{
+    fun getAll(): List<PetResponse>{
         return service.getAll()
     }
 
