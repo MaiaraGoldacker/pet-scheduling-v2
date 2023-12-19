@@ -8,11 +8,10 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 data class PetResponse(
-        var id: Long,
-        var name: String,
-        var createDate: LocalDateTime,
-        var birthDate: LocalDate,
-        var specie: PetSpecie
-        ){
+    var id: Long,
+    var name: String,
+    var createDate: LocalDateTime,
+    var birthDate: LocalDate,
+    var specie: PetSpecie){
     constructor() : this(0, "", LocalDateTime.now(), LocalDate.now(), PetSpecie.DOG)
 }

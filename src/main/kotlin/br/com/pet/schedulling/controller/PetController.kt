@@ -5,6 +5,8 @@ import br.com.pet.schedulling.request.PetRequest
 import br.com.pet.schedulling.response.PetResponse
 import br.com.pet.schedulling.service.PetService
 import jakarta.validation.Valid
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -23,8 +25,8 @@ import org.springframework.web.util.UriComponentsBuilder
 class PetController(private val service: PetService){
 
     @GetMapping
-    fun getAll(): List<PetResponse>{
-        return service.getAll()
+    fun getAll(pageable : Pageable): Page<PetResponse>{
+        return service.getAll(pageable)
     }
 
     @GetMapping("/{id}")
@@ -36,7 +38,7 @@ class PetController(private val service: PetService){
     fun save(@Valid @RequestBody pet: PetRequest,
              uriBuilder: UriComponentsBuilder): ResponseEntity<PetResponse> {
         val item = service.save(pet)
-        val uri = uriBuilder.path("/topicos/").build().toUri()
+        val uri = uriBuilder.path("/pets/").build().toUri()
 
         return ResponseEntity.created(uri).body(item)
     }

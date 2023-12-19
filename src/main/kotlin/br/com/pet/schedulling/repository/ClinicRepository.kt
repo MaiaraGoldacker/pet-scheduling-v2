@@ -1,10 +1,10 @@
 package br.com.pet.schedulling.repository
 
-import br.com.pet.schedulling.model.Pet
+import br.com.pet.schedulling.model.Clinic
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface PetRepository: JpaRepository<Pet, Long> {
+interface ClinicRepository: JpaRepository<Clinic, Long> {
 
 }

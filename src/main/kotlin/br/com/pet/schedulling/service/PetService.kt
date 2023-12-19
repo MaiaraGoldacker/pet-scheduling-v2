@@ -7,15 +7,18 @@ import br.com.pet.schedulling.repository.PetRepository
 import br.com.pet.schedulling.request.PetRequest
 import br.com.pet.schedulling.response.PetResponse
 import org.springframework.beans.BeanUtils
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
 class PetService(private val repository: PetRepository,
-                 var petMapper: PetMapper) {
+                 private val petMapper: PetMapper) {
 
-    fun getAll(): List<PetResponse>{
-       return petMapper.mapAll(repository.findAll());
+    fun getAll(pageable : Pageable): Page<PetResponse> {
+        val pageableList =  repository.findAll(pageable);
+        return petMapper.mapAll(pageableList)
     }
 
     fun getById(id: Long): PetResponse {

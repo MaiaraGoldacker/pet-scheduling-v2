@@ -4,6 +4,8 @@ import br.com.pet.schedulling.model.Pet
 import br.com.pet.schedulling.request.PetRequest
 import br.com.pet.schedulling.response.PetResponse
 import org.springframework.beans.BeanUtils
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Component
 import java.util.ArrayList
 
@@ -19,9 +21,7 @@ class PetMapper {
         BeanUtils.copyProperties(pet, petResponse);
         return petResponse
     }
-    fun mapAll(pets: List<Pet>): List<PetResponse> {
-        val  list = ArrayList<PetResponse>()
-        pets.forEach { list.add(map(it)) }
-        return  list
+    fun mapAll(pets: Page<Pet>): Page<PetResponse> {
+       return pets.map { map(it) }
     }
 }
