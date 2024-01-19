@@ -11,6 +11,7 @@ data class Clinic(
         var name: String,
         var cnpj: String,
         @Column(name = "create_date")
-        var createDate: LocalDateTime = LocalDateTime.now()) {
-    constructor() : this(null, "", "", LocalDateTime.now())
+        var createDate: LocalDateTime = LocalDateTime.now(),
+        var duration: Int) {
+    constructor() : this(null, "", "", LocalDateTime.now(), 0)
 }

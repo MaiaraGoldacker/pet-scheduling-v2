@@ -2,7 +2,6 @@ CREATE TABLE schedule
 (   id                 bigserial not null,
 	start_schedule TIMESTAMP not null,
 	end_schedule   TIMESTAMP not null,
-	duration	   int4 not null,
     create_date    TIMESTAMP not null DEFAULT Now(),
 	clinic_id      BIGINT not null,
 	pet_id 		   BIGINT not null,

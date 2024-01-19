@@ -25,7 +25,7 @@ class PetService(private val repository: PetRepository,
         return  petMapper.map(getPet(id))
     }
 
-    private fun getPet(id:Long): Pet {
+    fun getPet(id:Long): Pet {
         val optionalPet = repository.findById(id)
 
         if (optionalPet.isEmpty) throw NotFoundException("Pet not found")
